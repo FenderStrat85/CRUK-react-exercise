@@ -12,7 +12,7 @@ const SiteWrapper = styled.div`
 function App() {
   const formSchema = yup.object().shape({
     town: yup.string()
-      .required("Please enter your first name.")
+      .required("Please enter keywords to search.")
   });
 
   return (
@@ -25,30 +25,30 @@ function App() {
           <Formik
             validateOnChange
             initialValues={{
-              town: "",
+              keywords: "",
             }}
             validationSchema={formSchema}
             onSubmit={(values) => {
               console.log(values);
             }}>
-            {({ errors, isSubmitting, touched }) => {
+            {({ errors, touched }) => {
               return (
                 <Form>
-                  <Field name="town">
+                  <Field name="keywords">
                     {({ field }) => (
                       <>
                         <TextField
-                          label="Town/City" 
+                          label="Keywords" 
                           type="text"
                           required
                           {...field}
                         />
-                        {errors.town && touched.town && <p>{errors.town}</p>}
+                        {errors.keywords && touched.keywords && <p>{errors.keywords}</p>}
                       </>
                     )}
                   </Field>
 
-                  <Button type="submit" disabled={isSubmitting}>Submit</Button>
+                  <Button type="submit">Submit</Button>
                 </Form>
               )
             }}

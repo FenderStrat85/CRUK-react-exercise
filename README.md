@@ -14,16 +14,6 @@
 You will be building a form which will fetch assets from the NASA Images and Video Library API. The fields will provide filters for the query. The media returned should be displayed below the form for the user. The user should only see the first 10 items.
 
 ## Fields
-### Media type field
-Required  
-Default: none  
-Type: Select  
-Label: Media type  
-Name: mediaType  
-Values: [“audio”, “video”, “image”]
-
-An error message below the field should read “Please select a media type.” if the user does not select an option.
-
 ### Keywords field
 Required  
 Initial value: “”  
@@ -34,6 +24,16 @@ Name: keywords
 An error message below the field should read “Please enter keywords to search.” if the user does not fill in the field.
 
 An error message below the field should read “Keywords must be between 2 and 50 characters.” if the field value is less than 2 or more than 50 characters long.
+
+### Media type field
+Required  
+Default: none  
+Type: Select  
+Label: Media type  
+Name: mediaType  
+Values: [“audio”, “video”, “image”]
+
+An error message below the field should read “Please select a media type.” if the user does not select an option.
 
 ### Year start field
 Optional  
