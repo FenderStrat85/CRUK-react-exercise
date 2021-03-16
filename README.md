@@ -6,8 +6,8 @@
 
 ## Documentation for tools used
 - Formik: https://formik.org/docs/overview 
-- Cypress: https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html 
 - Yup https://github.com/jquense/yup 
+- Styled components https://styled-components.com/docs 
 - NASA Images and Video Library API https://api.nasa.gov/ 
 
 ## Task details
@@ -47,8 +47,7 @@ An error message below the field should read “Please enter a valid year.” if
 An error message below the field should read “Year must not be in the future.” if the user enters a year after the current year.
 
 ### Submit button
-Submit button should change to a disabled state and label should read “Submitting…” when user clicks the submit button and return to enabled / “Submit” when the API responds.
-Form behaviour
+Submit button should change to a disabled state and label should read “Submitting…” when user clicks the submit button to submit the form. The button should return to and enabled state with label “Submit” when the API responds.
 
 ## Tests
 Ensure your application has adequate test coverage.
