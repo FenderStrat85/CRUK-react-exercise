@@ -15,31 +15,31 @@ You will be building a form which will fetch assets from the NASA Images and Vid
 
 ## Fields
 ### Media type field
-Required
-Default: none
-Type: Select
-Label: Media type
-Name: mediaType
+Required  
+Default: none  
+Type: Select  
+Label: Media type  
+Name: mediaType  
 Values: [“audio”, “video”, “image”]
 
 An error message below the field should read “Please select a media type.” if the user does not select an option.
 
 ### Keywords field
-Required
-Initial value: “”
-Type: Text
-Label: Keywords
-Name: keywords
+Required  
+Initial value: “”  
+Type: Text  
+Label: Keywords  
+Name: keywords  
 
 An error message below the field should read “Please enter keywords to search.” if the user does not fill in the field.
 
 An error message below the field should read “Keywords must be between 2 and 50 characters.” if the field value is less than 2 or more than 50 characters long.
 
 ### Year start field
-Optional
-Initial value: “”
-Type: Text
-Label: Year start
+Optional  
+Initial value: “”  
+Type: Text  
+Label: Year start  
 Name: yearStart
 
 An error message below the field should read “Please enter a valid year.” if the user enters an invalid year.
