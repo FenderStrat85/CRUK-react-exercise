@@ -1,70 +1,54 @@
-# Getting Started with Create React App
+# CRUK technical exercise (React)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- A design has been provided for you to follow - TO-DO
+- The below technical guidance has been provided for the task
+- You should use the CRUK component library when building your form https://www.npmjs.com/package/@cruk/cruk-react-components 
 
-## Available Scripts
+## Documentation for tools used
+- Formik: https://formik.org/docs/overview 
+- Cypress: https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html 
+- Yup https://github.com/jquense/yup 
+- NASA Images and Video Library API https://api.nasa.gov/ 
 
-In the project directory, you can run:
+## Task details
+You will be building a form which will fetch assets from the NASA Images and Video Library API. The fields will provide filters for the query. The media returned should be displayed below the form for the user. The user should only see the first 10 items.
 
-### `npm start`
+## Fields
+### Media type field
+Required
+Default: none
+Type: Select
+Label: Media type
+Name: mediaType
+Values: [“audio”, “video”, “image”]
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+An error message below the field should read “Please select a media type.” if the user does not select an option.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Keywords field
+Required
+Initial value: “”
+Type: Text
+Label: Keywords
+Name: keywords
 
-### `npm test`
+An error message below the field should read “Please enter keywords to search.” if the user does not fill in the field.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+An error message below the field should read “Keywords must be between 2 and 50 characters.” if the field value is less than 2 or more than 50 characters long.
 
-### `npm run build`
+### Year start field
+Optional
+Initial value: “”
+Type: Text
+Label: Year start
+Name: yearStart
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+An error message below the field should read “Please enter a valid year.” if the user enters an invalid year.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+An error message below the field should read “Year must not be in the future.” if the user enters a year after the current year.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Submit button
+Submit button should change to a disabled state and label should read “Submitting…” when user clicks the submit button and return to enabled / “Submit” when the API responds.
+Form behaviour
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Tests
+Ensure your application has adequate test coverage.
