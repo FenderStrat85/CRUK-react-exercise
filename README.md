@@ -1,6 +1,5 @@
 # CRUK technical exercise (React)
 
-- A design has been provided for you to follow - TO-DO
 - The below technical guidance has been provided for the task
 - You should use the CRUK component library when building your form https://www.npmjs.com/package/@cruk/cruk-react-components 
 
