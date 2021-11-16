@@ -12,10 +12,10 @@ const SiteWrapper = styled.div`
 
 function App() {
   const formSchema = yup.object().shape({
-    town: yup.string()
+    keywords: yup.string()
       .required("Please enter keywords to search.")
   });
-
+  
   return (
     <ThemeProvider theme={crukTheme}>
       <SiteWrapper>
