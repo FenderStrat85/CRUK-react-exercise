@@ -6,7 +6,6 @@
     "@cruk/cruk-react-components": "0.1.0-alpha.84",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^13.1.5",
     "@types/jest": "^27.0.2",
     "@types/node": "^16.11.7",
     "@types/react": "^17.0.35",
@@ -45,6 +44,8 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/user-event": "^13.5.0",
     "@types/styled-components": "^5.1.15",
     "cypress": "^7.1.0"
   }
