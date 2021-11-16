@@ -2,6 +2,7 @@ import styled, { ThemeProvider } from "styled-components";
 import * as yup from "yup";
 import { Field, Form, Formik } from "formik";
 import { Button, TextField, crukTheme } from "@cruk/cruk-react-components";
+import React from "react";
 
 const SiteWrapper = styled.div`
   max-width: 1200px;
@@ -35,7 +36,7 @@ function App() {
               return (
                 <Form>
                   <Field name="keywords">
-                    {({ field }) => (
+                    {({ field }:{field: any}) => (
                       <>
                         <TextField
                           label="Keywords" 
