@@ -8,6 +8,8 @@ import {
   Select,
 } from "@cruk/cruk-react-components";
 import React from "react";
+import getData from "./apiService";
+import { IFormValues } from "./interfaces";
 
 const SiteWrapper = styled.div`
   max-width: 1200px;
@@ -31,6 +33,11 @@ function App() {
       .required("Please enter a valid year"),
   });
 
+  const apiCall = async (values: IFormValues) => {
+    const res = await getData(values);
+    console.log(res);
+  };
+
   return (
     <ThemeProvider theme={crukTheme}>
       <SiteWrapper>
@@ -46,8 +53,9 @@ function App() {
               yearStart: "",
             }}
             validationSchema={formSchema}
-            onSubmit={(values, actions) => {
+            onSubmit={(values: IFormValues, actions) => {
               console.log(values);
+              apiCall(values);
               actions.resetForm();
             }}
           >
