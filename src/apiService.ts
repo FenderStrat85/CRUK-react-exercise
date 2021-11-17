@@ -1,6 +1,8 @@
 import { IFormValues } from "./interfaces";
 
-const getData = (values: IFormValues) => {
+const apiService: { [key: string]: any } = {};
+
+apiService.getData = (values: IFormValues) => {
   console.log(values);
   const { keywords, mediaType, yearStart } = values;
   return fetch(
@@ -10,4 +12,4 @@ const getData = (values: IFormValues) => {
     .catch((err) => console.log("error", err));
 };
 
-export default getData;
+export default apiService;

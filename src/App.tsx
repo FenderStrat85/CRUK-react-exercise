@@ -8,7 +8,7 @@ import {
   Select,
 } from "@cruk/cruk-react-components";
 import React from "react";
-import getData from "./apiService";
+import apiService from "./apiService";
 import { IFormValues } from "./interfaces";
 
 const SiteWrapper = styled.div`
@@ -23,7 +23,7 @@ function App() {
       .string()
       .min(2, "Keywords must be between 2 and 50 characters")
       .max(50, "Keywords must be between 2 and 50 characters")
-      .required("Please enter keywords to search."),
+      .required("Please enter keywords to search"),
     mediaType: yup.string().required("Please select a media type"),
     yearStart: yup
       .number()
@@ -34,8 +34,10 @@ function App() {
   });
 
   const apiCall = async (values: IFormValues) => {
-    const res = await getData(values);
-    console.log(res);
+    const res = await apiService.getData(values);
+    // console.log(res.collection.items);
+    const dataToShow = res.collection.items.slice(0, 10);
+    console.log(dataToShow);
   };
 
   return (
