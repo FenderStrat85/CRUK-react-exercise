@@ -6,13 +6,18 @@
     "@cruk/cruk-react-components": "0.1.0-alpha.84",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^13.1.5",
+    "@types/jest": "^27.0.2",
+    "@types/node": "^16.11.7",
+    "@types/react": "^17.0.35",
+    "@types/react-dom": "^17.0.11",
     "formik": "2.2.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
+    "react-select": "^5.2.1",
     "styled-components": "^5.2.3",
-    "web-vitals": "^1.1.1",
+    "typescript": "^4.4.4",
+    "web-vitals": "^2.1.2",
     "yup": "^0.32.9"
   },
   "scripts": {
@@ -40,6 +45,10 @@
     ]
   },
   "devDependencies": {
-    "cypress": "^7.1.0"
+    "@testing-library/dom": "^8.11.1",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/styled-components": "^5.1.15",
+    "cypress": "^7.1.0",
+    "react-select-event": "^5.3.0"
   }
 }
