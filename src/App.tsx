@@ -7,9 +7,10 @@ import {
   crukTheme,
   Select,
 } from "@cruk/cruk-react-components";
-import React from "react";
+import React, { useState } from "react";
 import apiService from "./apiService";
 import { IFormValues } from "./interfaces";
+import DataTile from "./components/dataTile";
 
 const SiteWrapper = styled.div`
   max-width: 1200px;
@@ -18,6 +19,9 @@ const SiteWrapper = styled.div`
 `;
 
 function App() {
+  const [apiData, setApiData] = useState<any>([]);
+  const [submitting, setSubmitting] = useState(false);
+
   const formSchema = yup.object().shape({
     keywords: yup
       .string()
@@ -35,9 +39,11 @@ function App() {
 
   const apiCall = async (values: IFormValues) => {
     const res = await apiService.getData(values);
-    // console.log(res.collection.items);
+    console.log(res.collection);
     const dataToShow = res.collection.items.slice(0, 10);
     console.log(dataToShow);
+    setApiData(dataToShow);
+    setSubmitting(false);
   };
 
   return (
@@ -58,6 +64,7 @@ function App() {
             onSubmit={(values: IFormValues, actions) => {
               console.log(values);
               apiCall(values);
+              setSubmitting(true);
               actions.resetForm();
             }}
           >
@@ -85,12 +92,7 @@ function App() {
                     <Field name="mediaType">
                       {({ field }: { field: any }) => (
                         <>
-                          <Select
-                            label="Media type"
-                            required
-                            {...field}
-                            data-testid="select"
-                          >
+                          <Select label="Media type" required {...field}>
                             <option
                               value=""
                               label="Please select a media type"
@@ -122,12 +124,26 @@ function App() {
                       </>
                     )}
                   </Field>
-
-                  <Button type="submit">Submit</Button>
+                  {submitting ? (
+                    <Button disabled={true}>Submitting...</Button>
+                  ) : (
+                    <Button type="submit">Submit</Button>
+                  )}
                 </Form>
               );
             }}
           </Formik>
+          {apiData.length > 0 ? (
+            apiData.map((item: any) => {
+              return (
+                <div>
+                  <DataTile data={item}></DataTile>
+                </div>
+              );
+            })
+          ) : (
+            <h2>No data to display</h2>
+          )}
         </div>
       </SiteWrapper>
     </ThemeProvider>
