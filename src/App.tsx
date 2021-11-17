@@ -75,7 +75,12 @@ function App() {
                     <Field name="mediaType">
                       {({ field }: { field: any }) => (
                         <>
-                          <Select label="Media type" required {...field}>
+                          <Select
+                            label="Media type"
+                            required
+                            {...field}
+                            data-testid="select"
+                          >
                             <option
                               value=""
                               label="Please select a media type"
