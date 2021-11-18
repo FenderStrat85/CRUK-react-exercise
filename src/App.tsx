@@ -10,7 +10,7 @@ import {
 import React, { useState } from "react";
 import apiService from "./apiService";
 import { IFormValues } from "./interfaces";
-import DataTile from "./components/dataTile";
+import DataTile from "./components/DataTile";
 
 const SiteWrapper = styled.div`
   max-width: 1200px;
@@ -137,7 +137,10 @@ function App() {
             apiData.map((item: any) => {
               return (
                 <div>
-                  <DataTile data={item}></DataTile>
+                  <DataTile
+                    dataFromApi={item}
+                    key={item.data[0].nasa_id}
+                  ></DataTile>
                 </div>
               );
             })

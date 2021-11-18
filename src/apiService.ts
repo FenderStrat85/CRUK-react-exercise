@@ -12,4 +12,10 @@ apiService.getData = (values: IFormValues) => {
     .catch((err) => console.log("error", err));
 };
 
+apiService.getAssetMedia = (id: string) => {
+  return fetch(`https://images-api.nasa.gov/asset/${id}`)
+    .then((res) => res.json())
+    .catch((err) => console.log("error", err));
+};
+
 export default apiService;

@@ -1,19 +1,35 @@
-import React, { FC } from "react";
+import React from "react";
+import apiService from "../apiService";
 
-function DataTile(data: any) {
+function DataTile(props: any) {
   //access to href
-  // console.log(data.data);
+  console.log(props.dataFromApi);
+  console.log(props.dataFromApi.data[0].nasa_id);
 
-  //access to title etc
-  // console.log(data.data.data[0].center);
-  // console.log(data.data.links);
-  //need to perform additional search to return full data from the api call
-  //therefore will need to have another api call from this component.
+  const { title, nasa_id, location, media_type } = props.dataFromApi.data[0];
+
+  const mediaApiCall = async (id: string) => {
+    const mediaData = await apiService.getAssetMedia(id);
+    console.log(mediaData);
+  };
+
+  mediaApiCall(nasa_id);
+
   return (
     <div>
-      <h1>{data.data.data[0].title}</h1>
-      <h3>{data.data.data[0].center}</h3>
-      <img src={data.data.links[0].href} />
+      {media_type === "image" ? (
+        <div>
+          <h1>{title}</h1>
+          <h2>{location}</h2>
+          <p>I am an image</p>
+        </div>
+      ) : (
+        <div>
+          <h1>{title}</h1>
+          <h2>{location}</h2>
+          <p>I am not an image</p>
+        </div>
+      )}
     </div>
   );
 }
