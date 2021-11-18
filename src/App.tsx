@@ -39,7 +39,7 @@ function App() {
 
   const apiCall = async (values: IFormValues) => {
     const res = await apiService.getData(values);
-    console.log(res.collection);
+    // console.log(res.collection);
     const dataToShow = res.collection.items.slice(0, 10);
     console.log(dataToShow);
     setApiData(dataToShow);
@@ -136,11 +136,8 @@ function App() {
           {apiData.length > 0 ? (
             apiData.map((item: any) => {
               return (
-                <div>
-                  <DataTile
-                    dataFromApi={item}
-                    key={item.data[0].nasa_id}
-                  ></DataTile>
+                <div key={item.data[0].nasa_id}>
+                  <DataTile dataFromApi={item}></DataTile>
                 </div>
               );
             })

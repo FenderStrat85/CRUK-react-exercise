@@ -1,19 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import apiService from "../apiService";
 
 function DataTile(props: any) {
-  //access to href
-  console.log(props.dataFromApi);
-  console.log(props.dataFromApi.data[0].nasa_id);
+  // //access to href
+  // console.log(props.dataFromApi);
+  // console.log(props.dataFromApi.data[0].nasa_id);
+  const [mediaData, setMediaData] = useState<string>("");
+  const [message, setMessage] = useState("");
 
-  const { title, nasa_id, location, media_type } = props.dataFromApi.data[0];
+  const { title, nasa_id, location, media_type, description } =
+    props.dataFromApi.data[0];
 
   const mediaApiCall = async (id: string) => {
-    const mediaData = await apiService.getAssetMedia(id);
-    console.log(mediaData);
+    const assetMedia = await apiService.getAssetMedia(id);
+    console.log(assetMedia.collection.items[0].href);
+    setMediaData(assetMedia.collection.items[0].href);
+    if (media_type === "video") {
+      setMessage("Click to watch the video!");
+    }
+    if (media_type === "audio") {
+      setMessage("Click to listen to the audio!");
+    }
   };
 
-  mediaApiCall(nasa_id);
+  useEffect(() => {
+    mediaApiCall(nasa_id);
+  }, []);
 
   return (
     <div>
@@ -21,13 +33,14 @@ function DataTile(props: any) {
         <div>
           <h1>{title}</h1>
           <h2>{location}</h2>
-          <p>I am an image</p>
+          <p>{description}</p>
+          {mediaData ? <img src={mediaData} /> : null}
         </div>
       ) : (
         <div>
           <h1>{title}</h1>
           <h2>{location}</h2>
-          <p>I am not an image</p>
+          {mediaData ? <a href={mediaData}>{message}</a> : null}
         </div>
       )}
     </div>
