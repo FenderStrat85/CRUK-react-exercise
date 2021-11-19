@@ -16,6 +16,7 @@ const SiteWrapper = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem;
+  margin: 1rem;
 `;
 
 function App() {
@@ -39,9 +40,7 @@ function App() {
 
   const apiCall = async (values: IFormValues) => {
     const res = await apiService.getData(values);
-    // console.log(res.collection);
     const dataToShow = res.collection.items.slice(0, 10);
-    console.log(dataToShow);
     setApiData(dataToShow);
     setSubmitting(false);
   };
@@ -62,7 +61,6 @@ function App() {
             }}
             validationSchema={formSchema}
             onSubmit={(values: IFormValues, actions) => {
-              console.log(values);
               apiCall(values);
               setSubmitting(true);
               actions.resetForm();

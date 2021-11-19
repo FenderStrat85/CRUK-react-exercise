@@ -1,15 +1,6 @@
-import {
-  fireEvent,
-  getByLabelText,
-  render,
-  screen,
-  waitFor,
-  waitForElement,
-} from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import App from "./App";
 import userEvent from "@testing-library/user-event";
-import Select from "react-select";
-import selectEvent from "react-select-event";
 import apiService from "./apiService";
 import { act } from "react-dom/test-utils";
 
@@ -21,7 +12,7 @@ describe("App homepage", () => {
     screen.getByText(/Year start/);
   });
 
-  test("If the user enters fewer than two characters an error should be displayed", async () => {
+  test("If the user enters fewer than two characters an error message should be displayed", async () => {
     render(<App />);
     const handleSubmit = jest.fn();
     userEvent.type(screen.getByLabelText(/Keywords/i), "A");
@@ -30,7 +21,7 @@ describe("App homepage", () => {
     screen.getByText(/Keywords must be between 2 and 50 characters/);
   });
 
-  test("If the user enters fewer more than 50 characters an error should be displayed", async () => {
+  test("If the user enters fewer more than 50 characters an error message should be displayed", async () => {
     render(<App />);
     const handleSubmit = jest.fn();
     userEvent.type(
@@ -70,14 +61,10 @@ describe("App homepage", () => {
     const spyApiCall = jest.spyOn(apiService, "getData");
     userEvent.type(screen.getByLabelText(/Keywords/i), "Space");
     userEvent.selectOptions(screen.getByLabelText("Media type"), ["audio"]);
-    // const mediaType = screen.getByLabelText("Media type");
-    // selectEvent.select(mediaType, ["audio"]);
     userEvent.type(screen.getByLabelText(/Year Start/i), "1972");
     await act(async () => {
       userEvent.click(screen.getByRole("button", { name: /submit/i }));
     });
-    // await waitFor(() => expect(handleSubmit).toHaveBeenCalledTimes(0));
-    // expect(handleSubmit).toBeCalledTimes(1);
     expect(spyApiCall).toHaveBeenCalledTimes(1);
     expect(spyApiCall).toHaveBeenCalledWith(credentials);
   });
