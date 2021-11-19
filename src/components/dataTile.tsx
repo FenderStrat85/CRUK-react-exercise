@@ -50,12 +50,9 @@ function DataTile(props: any) {
 
   const { title, nasa_id, location, media_type, description } =
     props.dataFromApi.data[0];
-  console.log(props.dataFromApi);
 
   const mediaApiCall = async (id: string) => {
     const assetMedia = await apiService.getAssetMedia(id);
-    console.log(assetMedia);
-    console.log(assetMedia.collection.items[0].href);
     setMediaData(assetMedia.collection.items[0].href);
     if (media_type === "video") {
       setMessage("Click to watch the video!");
