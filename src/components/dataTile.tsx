@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import apiService from "../apiService";
 import { Button } from "@cruk/cruk-react-components";
 import styled from "styled-components";
+import { IApiCall } from "../interfaces";
 
 const Tile = styled.div`
   background: linear-gradient(to right, #00b6ed, #0083b0);
-  /* background: linear-gradient(to right, #00b4db, ); */
   border-radius: 10px;
   padding: 0 10px 10px 10px;
   margin: 20px 100px;
@@ -44,7 +44,7 @@ const Img = styled.img`
   box-shadow: 0px 2px 6px 2px rgba(0.2, 0.2, 0.2, 0.4);
 `;
 
-function DataTile(props: any) {
+function DataTile(props: { dataFromApi: IApiCall }) {
   const [mediaData, setMediaData] = useState("");
   const [message, setMessage] = useState("");
 

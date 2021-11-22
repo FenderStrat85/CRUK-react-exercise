@@ -9,7 +9,7 @@ import {
 } from "@cruk/cruk-react-components";
 import React, { useState } from "react";
 import apiService from "./apiService";
-import { IFormValues } from "./interfaces";
+import { IApiCall, IFormValues } from "./interfaces";
 import DataTile from "./components/DataTile";
 
 const SiteWrapper = styled.div`
@@ -40,7 +40,7 @@ function App() {
 
   const apiCall = async (values: IFormValues) => {
     const res = await apiService.getData(values);
-    const dataToShow = res.collection.items.slice(0, 10);
+    const dataToShow: IApiCall = res.collection.items.slice(0, 10);
     setApiData(dataToShow);
     setSubmitting(false);
   };
@@ -132,7 +132,7 @@ function App() {
             }}
           </Formik>
           {apiData.length > 0 ? (
-            apiData.map((item: any) => {
+            apiData.map((item: IApiCall) => {
               return (
                 <div key={item.data[0].nasa_id}>
                   <DataTile dataFromApi={item}></DataTile>
