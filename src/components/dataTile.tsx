@@ -50,7 +50,7 @@ function DataTile(props: { dataFromApi: IApiCall }) {
 
   const { title, nasa_id, location, media_type, description } =
     props.dataFromApi.data[0];
-
+  console.log(props.dataFromApi);
   const mediaApiCall = async (id: string) => {
     const assetMedia = await apiService.getAssetMedia(id);
     setMediaData(assetMedia.collection.items[0].href);

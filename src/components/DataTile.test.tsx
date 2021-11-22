@@ -4,37 +4,49 @@ import DataTile from "./DataTile";
 
 describe("DataTile Component", () => {
   const mockImageData = {
+    href: "testHref",
     data: [
       {
         title: "testImage",
-        nasa_id: "123",
+        center: "JSC",
+        date_created: "now",
+        description: "This is test",
+        keywords: ["test"],
         location: "Florida",
         media_type: "image",
-        description: "This is test",
-      },
-    ],
-  };
-
-  const mockVideoData = {
-    data: [
-      {
-        title: "testVideo",
         nasa_id: "123",
-        media_type: "video",
       },
     ],
   };
 
   const mockAudioData = {
+    href: "testHref",
     data: [
       {
         title: "testAudio",
-        nasa_id: "123",
+        center: "JSC",
+        date_created: "now",
+        description: "This is test",
+        keywords: ["test"],
         media_type: "audio",
+        nasa_id: "123",
       },
     ],
   };
 
+  const mockVideoData = {
+    href: "testHref",
+    data: [
+      {
+        title: "testVideo",
+        center: "JSC",
+        date_created: "now",
+        keywords: ["test"],
+        media_type: "video",
+        nasa_id: "123",
+      },
+    ],
+  };
   test("The page should render correctly for an image search", () => {
     render(<DataTile dataFromApi={mockImageData} />);
     screen.getByText(/Title: testImage/);

@@ -61,3 +61,8 @@ Submit button should change to a disabled state and label should read “Submitt
 ## Tests
 
 Ensure your application has adequate test coverage.
+
+## Future Plans / Improvements
+
+1. With a bit more time I would have provided more styling across the application.
+2. Adding a save option so users can save particularly interesting media items allowing them to access them at a later date.
