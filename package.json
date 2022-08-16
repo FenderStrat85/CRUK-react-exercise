@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@cruk/cruk-react-components": "0.1.0-alpha.84",
+    "@cruk/cruk-react-components": "1.1.6",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.5",
     "@types/jest": "^27.0.2",
